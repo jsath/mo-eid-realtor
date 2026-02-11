@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mo Eid | Luxury South Florida Real Estate</title>
+    <title>Mo Eid | South Florida Luxury Real Estate</title>
     <meta name="description" content="Muhammed Eid - Top 1% Luxury Realtor in South Florida. $600M+ in sales. Personalized service for discerning buyers and sellers.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-bg: #0a0a0a;
-            --color-bg-elevated: #141414;
-            --color-bg-card: #1a1a1a;
-            --color-text: #f5f5f0;
-            --color-text-muted: #8a8a85;
-            --color-accent: #c9a962;
-            --color-accent-light: #e0c88a;
-            --color-border: #2a2a2a;
-            --font-display: 'Cormorant Garamond', serif;
-            --font-body: 'Outfit', sans-serif;
+            --navy: #0c1829;
+            --navy-light: #1a2d47;
+            --gold: #b8956c;
+            --gold-light: #d4b896;
+            --cream: #f8f6f1;
+            --cream-dark: #ebe7df;
+            --white: #ffffff;
+            --text: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --font-serif: 'DM Serif Display', Georgia, serif;
+            --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
         }
 
         * {
@@ -30,1125 +31,1322 @@
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
-            font-family: var(--font-body);
-            background: var(--color-bg);
-            color: var(--color-text);
+            font-family: var(--font-sans);
+            background: var(--cream);
+            color: var(--text);
             line-height: 1.6;
-            font-weight: 300;
+            font-weight: 400;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Noise texture overlay */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            opacity: 0.03;
-            z-index: 1000;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        ::selection {
+            background: var(--navy);
+            color: var(--white);
         }
 
-        /* Navigation */
-        nav {
+        /* ═══════════════════════════════════════════
+           NAVIGATION
+        ═══════════════════════════════════════════ */
+        header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            z-index: 100;
-            padding: 1.5rem 4rem;
+            z-index: 1000;
+            padding: 1.5rem 4vw;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(180deg, rgba(10,10,10,0.95) 0%, transparent 100%);
-            transition: all 0.4s ease;
+            mix-blend-mode: difference;
         }
 
-        nav.scrolled {
-            background: rgba(10, 10, 10, 0.98);
-            backdrop-filter: blur(20px);
-            padding: 1rem 4rem;
+        header.solid {
+            mix-blend-mode: normal;
+            background: var(--white);
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
         }
 
         .logo {
-            font-family: var(--font-display);
-            font-size: 1.8rem;
-            font-weight: 400;
-            letter-spacing: 0.1em;
-            color: var(--color-text);
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--white);
             text-decoration: none;
+            letter-spacing: -0.02em;
         }
 
-        .logo span {
-            color: var(--color-accent);
+        header.solid .logo {
+            color: var(--navy);
         }
 
-        .nav-links {
+        nav {
             display: flex;
+            align-items: center;
             gap: 3rem;
-            list-style: none;
         }
 
-        .nav-links a {
-            color: var(--color-text-muted);
+        nav a {
+            color: var(--white);
             text-decoration: none;
-            font-size: 0.85rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--color-accent);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--color-text);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-cta {
-            padding: 0.75rem 1.5rem;
-            background: transparent;
-            border: 1px solid var(--color-accent);
-            color: var(--color-accent);
-            font-family: var(--font-body);
             font-size: 0.8rem;
-            letter-spacing: 0.15em;
+            font-weight: 500;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
+            transition: opacity 0.3s;
+        }
+
+        header.solid nav a {
+            color: var(--text);
+        }
+
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        .nav-contact {
+            padding: 0.75rem 1.75rem;
+            background: var(--white);
+            color: var(--navy) !important;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        header.solid .nav-contact {
+            background: var(--navy);
+            color: var(--white) !important;
+        }
+
+        .nav-contact:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            opacity: 1 !important;
+        }
+
+        .menu-btn {
+            display: none;
+            width: 28px;
+            height: 20px;
+            flex-direction: column;
+            justify-content: space-between;
+            background: none;
+            border: none;
             cursor: pointer;
-            transition: all 0.3s ease;
         }
 
-        .nav-cta:hover {
-            background: var(--color-accent);
-            color: var(--color-bg);
+        .menu-btn span {
+            height: 2px;
+            background: var(--white);
+            transition: 0.3s;
         }
 
-        /* Hero Section */
+        header.solid .menu-btn span {
+            background: var(--navy);
+        }
+
+        /* ═══════════════════════════════════════════
+           HERO
+        ═══════════════════════════════════════════ */
         .hero {
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
             position: relative;
-            padding: 0 4rem;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at 20% 80%, rgba(201, 169, 98, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(201, 169, 98, 0.05) 0%, transparent 40%),
-                linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-elevated) 100%);
         }
 
         .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 6vw 4rem 8vw;
+            background: var(--navy);
+            color: var(--white);
             position: relative;
-            z-index: 1;
-            text-align: center;
-            max-width: 1000px;
-            animation: fadeUp 1.2s ease-out;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .hero-label {
-            font-size: 0.75rem;
-            letter-spacing: 0.4em;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: var(--color-accent);
+            color: var(--gold);
             margin-bottom: 2rem;
-            animation: fadeUp 1.2s ease-out 0.2s both;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.3s;
         }
 
         .hero-title {
-            font-family: var(--font-display);
-            font-size: clamp(3rem, 10vw, 7rem);
-            font-weight: 300;
+            font-family: var(--font-serif);
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            font-weight: 400;
             line-height: 1.1;
-            margin-bottom: 1.5rem;
-            animation: fadeUp 1.2s ease-out 0.4s both;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.5s;
         }
 
         .hero-title em {
             font-style: italic;
-            color: var(--color-accent);
+            color: var(--gold-light);
         }
 
-        .hero-subtitle {
-            font-size: 1.1rem;
-            color: var(--color-text-muted);
-            max-width: 600px;
-            margin: 0 auto 3rem;
-            line-height: 1.8;
-            animation: fadeUp 1.2s ease-out 0.6s both;
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 4rem;
-            margin-top: 4rem;
-            animation: fadeUp 1.2s ease-out 0.8s both;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-family: var(--font-display);
-            font-size: 3rem;
-            font-weight: 300;
-            color: var(--color-accent);
-        }
-
-        .stat-label {
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--color-text-muted);
-            margin-top: 0.5rem;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            animation: float 2s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
-        }
-
-        .scroll-indicator span {
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--color-text-muted);
-        }
-
-        .scroll-line {
-            width: 1px;
-            height: 60px;
-            background: linear-gradient(180deg, var(--color-accent), transparent);
-        }
-
-        /* About Section */
-        .about {
-            padding: 10rem 4rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8rem;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .about-image {
-            position: relative;
-        }
-
-        .about-image::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            right: 20px;
-            bottom: 20px;
-            border: 1px solid var(--color-accent);
-            opacity: 0.3;
-        }
-
-        .about-img-placeholder {
-            width: 100%;
-            aspect-ratio: 3/4;
-            background: linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-bg-elevated) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-img-placeholder::after {
-            content: 'MO';
-            font-family: var(--font-display);
-            font-size: 8rem;
-            color: var(--color-accent);
-            opacity: 0.1;
-        }
-
-        .about-content {
-            padding: 2rem 0;
-        }
-
-        .section-label {
-            font-size: 0.75rem;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            color: var(--color-accent);
-            margin-bottom: 1.5rem;
-        }
-
-        .section-title {
-            font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 300;
-            line-height: 1.2;
-            margin-bottom: 2rem;
-        }
-
-        .about-text {
-            color: var(--color-text-muted);
-            margin-bottom: 1.5rem;
+        .hero-text {
             font-size: 1rem;
-            line-height: 1.9;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.7);
+            max-width: 420px;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.7s;
         }
 
-        .credentials {
-            display: flex;
-            gap: 2rem;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--color-border);
-        }
-
-        .credential {
-            display: flex;
+        .hero-cta {
+            display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
-            font-size: 0.85rem;
-            color: var(--color-text-muted);
+            gap: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.9s;
+            transition: gap 0.3s;
         }
 
-        .credential-icon {
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--color-accent);
+        .hero-cta:hover {
+            gap: 1.5rem;
+        }
+
+        .hero-cta span {
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--gold);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--color-accent);
-            font-size: 0.9rem;
+            transition: background 0.3s, border-color 0.3s;
         }
 
-        /* Services Section */
-        .services {
-            padding: 10rem 4rem;
-            background: var(--color-bg-elevated);
+        .hero-cta:hover span {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .hero-image {
+            position: relative;
+            background: linear-gradient(180deg, #a8c4d4 0%, #d4c4a8 100%);
+            overflow: hidden;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0l.83.828-1.415 1.415L51.8 0h2.827zM5.373 0l-.83.828L5.96 2.243 8.2 0H5.374zM48.97 0l3.657 3.657-1.414 1.414L46.143 0h2.828zM11.03 0L7.372 3.657 8.787 5.07 13.857 0H11.03zm32.284 0L49.8 6.485 48.384 7.9l-7.9-7.9h2.83zM16.686 0L10.2 6.485 11.616 7.9l7.9-7.9h-2.83zM22.344 0L13.858 8.485 15.272 9.9l9.9-9.9h-2.828zM32 0l-3.486 3.485 1.415 1.414L searching34.485 0H32zM0 5.373l.828-.83 1.415 1.415L0 8.2V5.374zm0 5.656l.828-.829 5.072 5.072-1.414 1.414L0 11.03v.828-.829zm0 5.657l.828-.828 8.243 8.243-1.414 1.414L0 16.686v.828-.828zm0 5.657l.828-.828L12.07 32.77l-1.414 1.414L0 22.344V22zM0 32l.828-.828L16.242 46.586l-1.414 1.414L0 32.828V32z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: -80px;
+            background: var(--white);
+            padding: 3rem;
+            width: 320px;
+            opacity: 0;
+            animation: slideIn 0.8s ease forwards 1.1s;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat-value {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            color: var(--navy);
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ═══════════════════════════════════════════
+           ABOUT
+        ═══════════════════════════════════════════ */
+        .about {
+            padding: 10rem 8vw;
+            display: grid;
+            grid-template-columns: 0.8fr 1fr;
+            gap: 8rem;
+            align-items: center;
+            background: var(--cream);
+        }
+
+        .about-visual {
             position: relative;
         }
 
-        .services::before {
+        .about-frame {
+            position: relative;
+            aspect-ratio: 3/4;
+            background: var(--navy);
+        }
+
+        .about-frame::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 1px;
-            height: 100px;
-            background: linear-gradient(180deg, transparent, var(--color-accent));
+            top: 2rem;
+            left: 2rem;
+            right: -2rem;
+            bottom: -2rem;
+            border: 1px solid var(--gold);
+            z-index: -1;
+        }
+
+        .about-initials {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 12rem;
+            font-style: italic;
+            color: var(--gold);
+            opacity: 0.15;
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: -2rem;
+            right: -3rem;
+            background: var(--gold);
+            color: var(--white);
+            padding: 1.5rem;
+            text-align: center;
+            width: 140px;
+        }
+
+        .about-badge-value {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .about-badge-label {
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 0.25rem;
+        }
+
+        .section-number {
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            color: var(--navy);
+        }
+
+        .about-text {
+            font-size: 1rem;
+            line-height: 1.9;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .credentials-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2.5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .credential-tag {
+            padding: 0.6rem 1.2rem;
+            background: var(--white);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--navy);
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        /* ═══════════════════════════════════════════
+           SERVICES
+        ═══════════════════════════════════════════ */
+        .services {
+            padding: 8rem 0;
+            background: var(--white);
         }
 
         .services-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 6rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            padding: 0 8vw;
+            margin-bottom: 5rem;
+            align-items: end;
+        }
+
+        .services-intro {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-muted);
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
         }
 
-        .service-card {
-            padding: 3rem;
-            background: var(--color-bg);
-            border: 1px solid var(--color-border);
-            transition: all 0.4s ease;
+        .service {
+            padding: 4rem 3rem;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-left: none;
             position: relative;
-            overflow: hidden;
+            transition: background 0.4s;
         }
 
-        .service-card::before {
+        .service:first-child {
+            border-left: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .service::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 3px;
-            background: var(--color-accent);
+            background: var(--gold);
             transform: scaleX(0);
             transform-origin: left;
-            transition: transform 0.4s ease;
+            transition: transform 0.4s;
         }
 
-        .service-card:hover {
-            border-color: var(--color-accent);
-            transform: translateY(-5px);
+        .service:hover {
+            background: var(--cream);
         }
 
-        .service-card:hover::before {
+        .service:hover::before {
             transform: scaleX(1);
         }
 
-        .service-number {
-            font-family: var(--font-display);
-            font-size: 3rem;
-            color: var(--color-accent);
-            opacity: 0.3;
-            margin-bottom: 1.5rem;
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--navy);
         }
 
         .service-title {
-            font-family: var(--font-display);
-            font-size: 1.6rem;
-            font-weight: 400;
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--navy);
             margin-bottom: 1rem;
         }
 
-        .service-desc {
-            color: var(--color-text-muted);
-            font-size: 0.95rem;
+        .service-text {
+            font-size: 0.9rem;
             line-height: 1.8;
+            color: var(--text-muted);
         }
 
-        /* Listings Section */
-        .listings {
-            padding: 10rem 4rem;
-            max-width: 1600px;
-            margin: 0 auto;
+        /* ═══════════════════════════════════════════
+           PORTFOLIO
+        ═══════════════════════════════════════════ */
+        .portfolio {
+            padding: 10rem 0;
+            background: var(--navy);
+            color: var(--white);
+            overflow: hidden;
         }
 
-        .listings-header {
+        .portfolio-header {
+            padding: 0 8vw;
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
+            align-items: end;
             margin-bottom: 4rem;
         }
 
-        .listings-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+        .portfolio .section-title {
+            color: var(--white);
+        }
+
+        .portfolio .section-number {
+            color: var(--gold-light);
+        }
+
+        .view-all {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--gold-light);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: gap 0.3s;
+        }
+
+        .view-all:hover {
+            gap: 1.25rem;
+        }
+
+        .portfolio-scroll {
+            display: flex;
             gap: 2rem;
+            padding: 0 8vw;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
         }
 
-        .listing-card {
+        .portfolio-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .property {
+            flex: 0 0 420px;
+            scroll-snap-align: start;
             position: relative;
-            overflow: hidden;
             cursor: pointer;
-            group: listing;
         }
 
-        .listing-image {
-            width: 100%;
+        .property-image {
             aspect-ratio: 4/5;
-            background: linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-bg-elevated) 100%);
+            background: linear-gradient(135deg, var(--navy-light) 0%, #2a4a6a 100%);
             position: relative;
             overflow: hidden;
-            transition: transform 0.6s ease;
+            margin-bottom: 1.5rem;
         }
 
-        .listing-card:hover .listing-image {
-            transform: scale(1.05);
-        }
-
-        .listing-overlay {
+        .property-image::after {
+            content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 2rem;
-            background: linear-gradient(0deg, rgba(10,10,10,0.95) 0%, transparent 100%);
-            transform: translateY(20px);
+            inset: 0;
+            background: linear-gradient(0deg, rgba(12,24,41,0.6) 0%, transparent 50%);
             opacity: 0;
-            transition: all 0.4s ease;
+            transition: opacity 0.4s;
         }
 
-        .listing-card:hover .listing-overlay {
-            transform: translateY(0);
+        .property:hover .property-image::after {
             opacity: 1;
         }
 
-        .listing-location {
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--color-accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .listing-title {
-            font-family: var(--font-display);
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .listing-price {
-            font-size: 1.1rem;
-            color: var(--color-text-muted);
-        }
-
-        .listing-badge {
+        .property-tag {
             position: absolute;
             top: 1.5rem;
             left: 1.5rem;
             padding: 0.5rem 1rem;
-            background: var(--color-accent);
-            color: var(--color-bg);
+            background: var(--gold);
+            color: var(--navy);
             font-size: 0.65rem;
-            letter-spacing: 0.15em;
+            font-weight: 600;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
+            z-index: 2;
         }
 
-        .view-all-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 2rem;
-            background: transparent;
-            border: 1px solid var(--color-border);
-            color: var(--color-text);
-            font-family: var(--font-body);
-            font-size: 0.8rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .property-details {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            right: 1.5rem;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.4s;
+            z-index: 2;
         }
 
-        .view-all-btn:hover {
-            border-color: var(--color-accent);
-            color: var(--color-accent);
+        .property:hover .property-details {
+            transform: translateY(0);
+            opacity: 1;
         }
 
-        /* Testimonial Section */
-        .testimonial {
-            padding: 10rem 4rem;
-            background: var(--color-bg-elevated);
-            text-align: center;
-        }
-
-        .testimonial-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .quote-mark {
-            font-family: var(--font-display);
-            font-size: 8rem;
-            color: var(--color-accent);
-            opacity: 0.2;
-            line-height: 1;
-            margin-bottom: -3rem;
-        }
-
-        .testimonial-text {
-            font-family: var(--font-display);
-            font-size: clamp(1.5rem, 3vw, 2.2rem);
-            font-weight: 300;
-            font-style: italic;
-            line-height: 1.6;
-            margin-bottom: 3rem;
-        }
-
-        .testimonial-author {
-            font-size: 0.85rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--color-text-muted);
-        }
-
-        .testimonial-author span {
-            color: var(--color-accent);
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 10rem 4rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .contact-info h2 {
-            font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 300;
-            line-height: 1.2;
-            margin-bottom: 2rem;
-        }
-
-        .contact-text {
-            color: var(--color-text-muted);
-            margin-bottom: 3rem;
-            line-height: 1.8;
-        }
-
-        .contact-details {
+        .property-specs {
             display: flex;
-            flex-direction: column;
             gap: 1.5rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            color: rgba(255,255,255,0.8);
         }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            border: 1px solid var(--color-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .contact-item-content span {
-            display: block;
+        .property-location {
             font-size: 0.7rem;
+            font-weight: 500;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--color-text-muted);
+            color: var(--gold-light);
             margin-bottom: 0.25rem;
         }
 
-        .contact-item-content a {
-            color: var(--color-text);
+        .property-title {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .property-price {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* ═══════════════════════════════════════════
+           TESTIMONIAL
+        ═══════════════════════════════════════════ */
+        .testimonial {
+            padding: 10rem 8vw;
+            background: var(--cream);
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .testimonial-quote-mark {
+            font-family: var(--font-serif);
+            font-size: 18rem;
+            line-height: 0.7;
+            color: var(--gold);
+            opacity: 0.3;
+        }
+
+        .testimonial-content {
+            max-width: 700px;
+        }
+
+        .testimonial-text {
+            font-family: var(--font-serif);
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--navy);
+            margin-bottom: 2.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-author::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-location {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ═══════════════════════════════════════════
+           CONTACT
+        ═══════════════════════════════════════════ */
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+        }
+
+        .contact-info {
+            background: var(--navy);
+            color: var(--white);
+            padding: 8rem 6vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info .section-title {
+            color: var(--white);
+        }
+
+        .contact-info .section-number {
+            color: var(--gold-light);
+        }
+
+        .contact-text {
+            font-size: 1rem;
+            line-height: 1.9;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 4rem;
+            max-width: 400px;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .contact-method-icon {
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-method-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-method-value {
+            color: var(--white);
             text-decoration: none;
             font-size: 1.1rem;
-            transition: color 0.3s ease;
+            transition: color 0.3s;
         }
 
-        .contact-item-content a:hover {
-            color: var(--color-accent);
+        .contact-method-value:hover {
+            color: var(--gold-light);
         }
 
-        .contact-form {
-            background: var(--color-bg-elevated);
-            padding: 3rem;
-            border: 1px solid var(--color-border);
+        .contact-form-wrap {
+            background: var(--white);
+            padding: 8rem 6vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-form-title {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-bottom: 3rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
         }
 
         .form-group {
             margin-bottom: 1.5rem;
         }
 
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
         .form-group label {
             display: block;
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--color-text-muted);
+            color: var(--text-muted);
             margin-bottom: 0.75rem;
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
-            padding: 1rem;
-            background: var(--color-bg);
-            border: 1px solid var(--color-border);
-            color: var(--color-text);
-            font-family: var(--font-body);
+            padding: 1rem 0;
+            background: none;
+            border: none;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            font-family: var(--font-sans);
             font-size: 1rem;
-            transition: border-color 0.3s ease;
+            color: var(--text);
+            transition: border-color 0.3s;
         }
 
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
-            border-color: var(--color-accent);
+            border-color: var(--navy);
         }
 
         .form-group textarea {
-            min-height: 150px;
+            min-height: 100px;
             resize: vertical;
         }
 
         .submit-btn {
-            width: 100%;
-            padding: 1.25rem;
-            background: var(--color-accent);
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 2.5rem;
+            background: var(--navy);
+            color: var(--white);
             border: none;
-            color: var(--color-bg);
-            font-family: var(--font-body);
-            font-size: 0.85rem;
-            letter-spacing: 0.2em;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: background 0.3s, transform 0.3s;
+            margin-top: 1rem;
         }
 
         .submit-btn:hover {
-            background: var(--color-accent-light);
+            background: var(--navy-light);
+            transform: translateY(-2px);
         }
 
-        /* Footer */
+        /* ═══════════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════════ */
         footer {
-            padding: 4rem;
-            border-top: 1px solid var(--color-border);
+            padding: 4rem 8vw;
+            background: var(--cream-dark);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .footer-logo {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            letter-spacing: 0.1em;
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--navy);
         }
 
-        .footer-logo span {
-            color: var(--color-accent);
-        }
-
-        .social-links {
+        .footer-social {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
-        .social-links a {
-            width: 45px;
-            height: 45px;
-            border: 1px solid var(--color-border);
+        .footer-social a {
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--color-text-muted);
+            color: var(--text);
             text-decoration: none;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s;
         }
 
-        .social-links a:hover {
-            border-color: var(--color-accent);
-            color: var(--color-accent);
+        .footer-social a:hover {
+            background: var(--navy);
+            border-color: var(--navy);
+            color: var(--white);
         }
 
-        .footer-text {
+        .footer-copy {
             font-size: 0.8rem;
-            color: var(--color-text-muted);
+            color: var(--text-muted);
         }
 
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        .mobile-menu-btn span {
-            width: 25px;
-            height: 1px;
-            background: var(--color-text);
-            transition: all 0.3s ease;
-        }
-
-        /* Responsive */
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════════ */
         @media (max-width: 1024px) {
-            nav {
-                padding: 1.25rem 2rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .nav-cta {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: flex;
-            }
-
             .hero {
-                padding: 0 2rem;
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content {
+                min-height: 100vh;
+                padding: 8rem 6vw 6rem;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .hero-overlay {
+                position: relative;
+                left: 0;
+                width: 100%;
+                background: rgba(255,255,255,0.05);
+                margin-top: 3rem;
+                animation-delay: 0.9s;
             }
 
             .hero-stats {
-                gap: 2rem;
+                grid-template-columns: repeat(4, 1fr);
             }
 
             .stat-value {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
+                color: var(--gold-light);
+            }
+
+            .stat-label {
+                color: rgba(255,255,255,0.6);
             }
 
             .about {
                 grid-template-columns: 1fr;
                 gap: 4rem;
-                padding: 6rem 2rem;
+                padding: 6rem 6vw;
             }
 
-            .services {
-                padding: 6rem 2rem;
+            .about-visual {
+                max-width: 400px;
+            }
+
+            .services-header {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
             }
 
-            .listings {
-                padding: 6rem 2rem;
-            }
-
-            .listings-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 2rem;
-            }
-
-            .listings-grid {
-                grid-template-columns: 1fr;
+            .service {
+                border-left: 1px solid rgba(0,0,0,0.06);
             }
 
             .testimonial {
-                padding: 6rem 2rem;
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 6rem 6vw;
+            }
+
+            .testimonial-quote-mark {
+                font-size: 10rem;
             }
 
             .contact {
                 grid-template-columns: 1fr;
-                gap: 4rem;
-                padding: 6rem 2rem;
+            }
+
+            .contact-info,
+            .contact-form-wrap {
+                padding: 5rem 6vw;
             }
 
             footer {
                 flex-direction: column;
                 gap: 2rem;
                 text-align: center;
-                padding: 3rem 2rem;
             }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
+            nav a:not(.nav-contact) {
+                display: none;
+            }
+
+            .menu-btn {
+                display: flex;
+            }
+
             .hero-stats {
-                flex-direction: column;
-                gap: 2rem;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
             }
 
-            .credentials {
-                flex-direction: column;
+            .property {
+                flex: 0 0 320px;
             }
 
-            .service-card {
-                padding: 2rem;
+            .form-row {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <nav id="navbar">
-        <a href="#" class="logo">MO <span>EID</span></a>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#listings">Portfolio</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Get in Touch</button>
-        <button class="mobile-menu-btn" aria-label="Menu">
+    <header id="header">
+        <a href="#" class="logo">Mo Eid</a>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Properties</a>
+            <a href="#contact" class="nav-contact">Contact</a>
+        </nav>
+        <button class="menu-btn" aria-label="Menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
-    </nav>
+    </header>
 
     <section class="hero">
-        <div class="hero-bg"></div>
         <div class="hero-content">
-            <p class="hero-label">Licensed Realtor® • Licensed FL Contractor</p>
-            <h1 class="hero-title">A Higher Standard of <em>Representation</em></h1>
-            <p class="hero-subtitle">South Florida's premier luxury real estate expert. Powered by the #1 top-producing team at The Keyes Company, Florida's leading independent brokerage.</p>
-            <div class="hero-stats">
-                <div class="stat">
-                    <div class="stat-value">Top 1%</div>
-                    <div class="stat-label">Nationwide</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">$600M+</div>
-                    <div class="stat-label">Sales Volume</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">1,200+</div>
-                    <div class="stat-label">Transactions</div>
+            <p class="hero-label">Licensed Realtor® · Florida Contractor</p>
+            <h1 class="hero-title">South Florida Luxury Real Estate, <em>Elevated</em></h1>
+            <p class="hero-text">Representing discerning buyers and sellers across South Florida's most prestigious addresses. Powered by The Keyes Company, Florida's leading independent brokerage.</p>
+            <a href="#contact" class="hero-cta">
+                Schedule Consultation
+                <span>→</span>
+            </a>
+            <div class="hero-overlay">
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-value">Top 1%</div>
+                        <div class="stat-label">Nationwide</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">$600M+</div>
+                        <div class="stat-label">Sold</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">1,200+</div>
+                        <div class="stat-label">Transactions</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">15+</div>
+                        <div class="stat-label">Years</div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <span>Scroll</span>
-            <div class="scroll-line"></div>
-        </div>
+        <div class="hero-image"></div>
     </section>
 
     <section id="about" class="about">
-        <div class="about-image">
-            <div class="about-img-placeholder"></div>
+        <div class="about-visual">
+            <div class="about-frame">
+                <div class="about-initials">ME</div>
+            </div>
+            <div class="about-badge">
+                <div class="about-badge-value">Top 1%</div>
+                <div class="about-badge-label">Nationwide</div>
+            </div>
         </div>
         <div class="about-content">
-            <p class="section-label">About Me</p>
-            <h2 class="section-title">Luxury Real Estate, Redefined</h2>
-            <p class="about-text">With deep expertise in South Florida's luxury market, I deliver personalized service and unparalleled results for discerning buyers and sellers. As both a licensed REALTOR® and Florida Contractor, I bring a unique perspective to every transaction.</p>
-            <p class="about-text">My commitment to excellence has positioned me among the top 1% of real estate professionals nationwide, backed by over $600 million in successful transactions. Whether you're seeking an oceanfront mansion or a prestigious penthouse, I ensure a seamless experience from first showing to final closing.</p>
-            <div class="credentials">
-                <div class="credential">
-                    <div class="credential-icon">✓</div>
-                    <span>Licensed REALTOR®</span>
-                </div>
-                <div class="credential">
-                    <div class="credential-icon">✓</div>
-                    <span>FL Contractor</span>
-                </div>
-                <div class="credential">
-                    <div class="credential-icon">✓</div>
-                    <span>Keyes Company</span>
-                </div>
+            <span class="section-number">01</span>
+            <h2 class="section-title">A Higher Standard of Representation</h2>
+            <p class="about-text">With deep expertise in South Florida's luxury market, I deliver personalized service and exceptional results for discerning clients. As both a licensed REALTOR® and Florida Contractor, I bring a unique perspective to every transaction—from oceanfront estates to exclusive penthouses.</p>
+            <p class="about-text">My commitment to excellence has positioned me among the top 1% of real estate professionals nationwide, backed by over $600 million in successful transactions and more than 1,200 satisfied clients.</p>
+            <div class="credentials-list">
+                <span class="credential-tag">Licensed REALTOR®</span>
+                <span class="credential-tag">FL Contractor</span>
+                <span class="credential-tag">The Keyes Company</span>
+                <span class="credential-tag">Luxury Specialist</span>
             </div>
         </div>
     </section>
 
     <section id="services" class="services">
         <div class="services-header">
-            <p class="section-label">Services</p>
-            <h2 class="section-title">Comprehensive Real Estate Solutions</h2>
+            <div>
+                <span class="section-number">02</span>
+                <h2 class="section-title">Full-Service Luxury Real Estate</h2>
+            </div>
+            <p class="services-intro">Comprehensive expertise across every facet of South Florida's luxury market, from acquisition strategy to seamless closing.</p>
         </div>
         <div class="services-grid">
-            <div class="service-card">
-                <div class="service-number">01</div>
+            <div class="service">
+                <div class="service-icon">B</div>
                 <h3 class="service-title">Buyer Representation</h3>
-                <p class="service-desc">Expert guidance through South Florida's luxury market. From initial search to final closing, I ensure you find the perfect property that exceeds expectations.</p>
+                <p class="service-text">Strategic guidance through South Florida's luxury market. From initial search to final closing, ensuring you secure the perfect property.</p>
             </div>
-            <div class="service-card">
-                <div class="service-number">02</div>
+            <div class="service">
+                <div class="service-icon">S</div>
                 <h3 class="service-title">Seller Services</h3>
-                <p class="service-desc">Strategic marketing, professional staging, and skilled negotiation to maximize your property's value and achieve exceptional results in any market condition.</p>
+                <p class="service-text">Expert marketing, professional staging, and skilled negotiation to maximize your property's value in any market condition.</p>
             </div>
-            <div class="service-card">
-                <div class="service-number">03</div>
+            <div class="service">
+                <div class="service-icon">I</div>
                 <h3 class="service-title">Investment Advisory</h3>
-                <p class="service-desc">Leverage my market expertise and contractor background to identify high-potential investment opportunities and maximize your real estate portfolio returns.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-number">04</div>
-                <h3 class="service-title">Market Analysis</h3>
-                <p class="service-desc">Comprehensive property valuations and market insights powered by data-driven analysis and years of local market expertise.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-number">05</div>
-                <h3 class="service-title">Luxury Rentals</h3>
-                <p class="service-desc">Access to exclusive luxury rental properties throughout South Florida, from seasonal retreats to long-term residences.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-number">06</div>
-                <h3 class="service-title">Relocation Services</h3>
-                <p class="service-desc">Seamless transition support for those moving to South Florida, including area orientation, school information, and lifestyle consultation.</p>
+                <p class="service-text">Leverage market expertise and contractor knowledge to identify high-potential opportunities and maximize portfolio returns.</p>
             </div>
         </div>
     </section>
 
-    <section id="listings" class="listings">
-        <div class="listings-header">
+    <section id="portfolio" class="portfolio">
+        <div class="portfolio-header">
             <div>
-                <p class="section-label">Portfolio</p>
+                <span class="section-number">03</span>
                 <h2 class="section-title">Featured Properties</h2>
             </div>
-            <button class="view-all-btn">View All Listings →</button>
+            <a href="#" class="view-all">View All Listings →</a>
         </div>
-        <div class="listings-grid">
-            <div class="listing-card">
-                <div class="listing-image">
-                    <span class="listing-badge">Featured</span>
+        <div class="portfolio-scroll">
+            <article class="property">
+                <div class="property-image">
+                    <span class="property-tag">Featured</span>
+                    <div class="property-details">
+                        <div class="property-specs">
+                            <span>5 BD</span>
+                            <span>6 BA</span>
+                            <span>6,200 SF</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="listing-overlay">
-                    <p class="listing-location">Boca Raton, FL</p>
-                    <h3 class="listing-title">Oceanfront Estate</h3>
-                    <p class="listing-price">$4,850,000</p>
+                <p class="property-location">Boca Raton</p>
+                <h3 class="property-title">Oceanfront Estate</h3>
+                <p class="property-price">$4,850,000</p>
+            </article>
+            <article class="property">
+                <div class="property-image">
+                    <span class="property-tag">New Listing</span>
+                    <div class="property-details">
+                        <div class="property-specs">
+                            <span>4 BD</span>
+                            <span>5 BA</span>
+                            <span>4,800 SF</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="listing-card">
-                <div class="listing-image">
-                    <span class="listing-badge">New</span>
+                <p class="property-location">Fort Lauderdale</p>
+                <h3 class="property-title">Waterfront Villa</h3>
+                <p class="property-price">$3,200,000</p>
+            </article>
+            <article class="property">
+                <div class="property-image">
+                    <span class="property-tag">Exclusive</span>
+                    <div class="property-details">
+                        <div class="property-specs">
+                            <span>3 BD</span>
+                            <span>4 BA</span>
+                            <span>3,400 SF</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="listing-overlay">
-                    <p class="listing-location">Fort Lauderdale, FL</p>
-                    <h3 class="listing-title">Waterfront Villa</h3>
-                    <p class="listing-price">$3,200,000</p>
+                <p class="property-location">Miami Beach</p>
+                <h3 class="property-title">Penthouse Residence</h3>
+                <p class="property-price">$6,500,000</p>
+            </article>
+            <article class="property">
+                <div class="property-image">
+                    <span class="property-tag">Pending</span>
+                    <div class="property-details">
+                        <div class="property-specs">
+                            <span>6 BD</span>
+                            <span>7 BA</span>
+                            <span>8,100 SF</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="listing-card">
-                <div class="listing-image">
-                    <span class="listing-badge">Exclusive</span>
-                </div>
-                <div class="listing-overlay">
-                    <p class="listing-location">Miami Beach, FL</p>
-                    <h3 class="listing-title">Penthouse Suite</h3>
-                    <p class="listing-price">$6,500,000</p>
-                </div>
-            </div>
+                <p class="property-location">Palm Beach</p>
+                <h3 class="property-title">Mediterranean Estate</h3>
+                <p class="property-price">$8,900,000</p>
+            </article>
         </div>
     </section>
 
     <section class="testimonial">
+        <div class="testimonial-quote-mark">"</div>
         <div class="testimonial-content">
-            <div class="quote-mark">"</div>
             <p class="testimonial-text">Mo's expertise and dedication made our home buying experience exceptional. His knowledge of the South Florida market and attention to detail exceeded all expectations. We couldn't have asked for a better realtor.</p>
-            <p class="testimonial-author">— Recent Client, <span>Boca Raton</span></p>
+            <div class="testimonial-author">
+                <div>
+                    <p class="testimonial-name">Recent Client</p>
+                    <p class="testimonial-location">Boca Raton, FL</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="contact" class="contact">
         <div class="contact-info">
-            <p class="section-label">Contact</p>
-            <h2>Let's Find Your <em>Perfect</em> Property</h2>
-            <p class="contact-text">Ready to make your move in South Florida's luxury market? Whether you're buying, selling, or simply exploring your options, I'm here to provide the expert guidance you deserve.</p>
-            <div class="contact-details">
-                <div class="contact-item">
-                    <div class="contact-icon">✉</div>
-                    <div class="contact-item-content">
-                        <span>Email</span>
-                        <a href="mailto:mo@mysflrealtor.com">mo@mysflrealtor.com</a>
+            <span class="section-number">04</span>
+            <h2 class="section-title">Let's Find Your Next Home</h2>
+            <p class="contact-text">Ready to make your move in South Florida's luxury market? Whether buying, selling, or exploring your options, I'm here to provide the expert guidance you deserve.</p>
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="contact-method-icon">✉</div>
+                    <div>
+                        <p class="contact-method-label">Email</p>
+                        <a href="mailto:mo@mysflrealtor.com" class="contact-method-value">mo@mysflrealtor.com</a>
                     </div>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">☎</div>
-                    <div class="contact-item-content">
-                        <span>Phone</span>
-                        <a href="tel:+15551234567">(555) 123-4567</a>
+                <div class="contact-method">
+                    <div class="contact-method-icon">☎</div>
+                    <div>
+                        <p class="contact-method-label">Phone</p>
+                        <a href="tel:+15551234567" class="contact-method-value">(555) 123-4567</a>
                     </div>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">◎</div>
-                    <div class="contact-item-content">
-                        <span>Location</span>
-                        <a href="#">South Florida</a>
+                <div class="contact-method">
+                    <div class="contact-method-icon">◎</div>
+                    <div>
+                        <p class="contact-method-label">Location</p>
+                        <span class="contact-method-value">South Florida</span>
                     </div>
                 </div>
             </div>
         </div>
-        <form class="contact-form">
-            <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone">
-            </div>
-            <div class="form-group">
-                <label for="message">Your Message</label>
-                <textarea id="message" name="message" required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Send Message</button>
-        </form>
+        <div class="contact-form-wrap">
+            <h3 class="contact-form-title">Send a Message</h3>
+            <form class="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="interest">I'm Interested In</label>
+                        <select id="interest" name="interest">
+                            <option value="">Select...</option>
+                            <option value="buying">Buying</option>
+                            <option value="selling">Selling</option>
+                            <option value="both">Both</option>
+                            <option value="investment">Investment</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group full">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message →</button>
+            </form>
+        </div>
     </section>
 
     <footer>
-        <div class="footer-logo">MO <span>EID</span></div>
-        <div class="social-links">
+        <span class="footer-logo">Mo Eid</span>
+        <div class="footer-social">
             <a href="https://www.instagram.com/mo_eid/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
-            <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">LI</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="LinkedIn">LI</a>
         </div>
-        <p class="footer-text">© 2025 Mo Eid. All rights reserved.</p>
+        <p class="footer-copy">© 2025 Mo Eid. All rights reserved.</p>
     </footer>
 
     <script>
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+        // Header scroll state
+        const header = document.getElementById('header');
+        const hero = document.querySelector('.hero');
+        
+        const headerObserver = new IntersectionObserver(
+            ([entry]) => {
+                header.classList.toggle('solid', !entry.isIntersecting);
+            },
+            { threshold: 0, rootMargin: '-100px 0px 0px 0px' }
+        );
+        headerObserver.observe(hero);
 
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+        // Scroll animations
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.about, .about-visual, .about-content, .service, .testimonial-content, .contact-info, .contact-form-wrap');
+            
+            elements.forEach(el => {
+                if (!el.dataset.animated) {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(40px)';
+                    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
                 }
             });
-        }, observerOptions);
 
-        // Observe elements for scroll animations
-        document.querySelectorAll('.about, .service-card, .listing-card, .testimonial-content, .contact').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-            observer.observe(el);
-        });
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry, index) => {
+                        if (entry.isIntersecting && !entry.target.dataset.animated) {
+                            setTimeout(() => {
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0)';
+                                entry.target.dataset.animated = 'true';
+                            }, index * 100);
+                        }
+                    });
+                },
+                { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+            );
 
-        // Form submission
+            elements.forEach(el => observer.observe(el));
+        };
+
+        animateOnScroll();
+
+        // Form handling
         document.querySelector('.contact-form').addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Thank you for your message! Mo will be in touch shortly.');
+            alert('Thank you for your message. Mo will be in touch shortly.');
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
         });
     </script>
 </body>
