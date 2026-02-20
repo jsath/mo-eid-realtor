@@ -1010,9 +1010,86 @@
                 display: flex;
             }
 
+            /* ISSUE 1: Move logo down, shrink slightly, away from menu icons */
+            header {
+                padding: 1rem 4vw;
+            }
+
+            .logo {
+                font-size: 1.25rem;
+                margin-top: 0.5rem;
+            }
+
+            /* ISSUE 1: Hero - move content down, ensure button visible, no gap */
+            .hero-content {
+                min-height: 100vh;
+                min-height: 100dvh;
+                padding: 6rem 6vw 3rem;
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 8vw, 2.8rem);
+                margin-bottom: 1.25rem;
+            }
+
+            .hero-text {
+                margin-bottom: 2rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-label {
+                margin-bottom: 1.25rem;
+            }
+
+            .hero-overlay {
+                margin-top: 2rem;
+                padding: 2rem;
+            }
+
             .hero-stats {
                 grid-template-columns: 1fr 1fr;
                 gap: 1.5rem;
+            }
+
+            /* ISSUE 2: Article/section headers - more breathing room on mobile */
+            .portfolio-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+                padding: 0 6vw;
+            }
+
+            .services-header {
+                padding: 0 6vw;
+            }
+
+            .section-title {
+                font-size: clamp(1.6rem, 6vw, 2.2rem);
+            }
+
+            .section-number {
+                margin-bottom: 0.75rem;
+            }
+
+            .about {
+                padding: 4rem 6vw;
+            }
+
+            .services {
+                padding: 4rem 0;
+            }
+
+            .services-header {
+                margin-bottom: 3rem;
+            }
+
+            .portfolio {
+                padding: 5rem 0;
+            }
+
+            .testimonial {
+                padding: 4rem 6vw;
             }
 
             .property {
@@ -1021,6 +1098,11 @@
 
             .form-row {
                 grid-template-columns: 1fr;
+            }
+
+            .contact-info,
+            .contact-form-wrap {
+                padding: 3.5rem 6vw;
             }
         }
     </style>
