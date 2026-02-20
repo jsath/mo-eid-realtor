@@ -42,6 +42,11 @@
             font-weight: 400;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            padding-top: 80px;
+        }
+
+        body.has-hero {
+            padding-top: 0;
         }
 
         ::selection {
@@ -1002,6 +1007,14 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+
+            body.has-hero {
+                padding-top: 0;
+            }
+
             nav a:not(.nav-contact) {
                 display: none;
             }
@@ -1107,7 +1120,7 @@
         }
     </style>
 </head>
-<body>
+<body class="has-hero">
     <header id="header">
         <a href="#" class="logo">Mo Eid</a>
         <nav>
